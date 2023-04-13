@@ -1,0 +1,52 @@
+import React, {useState} from 'react'
+
+//import * as firebase from 'firebase/app'
+//import * as FStools from 'firebase/firestore'
+
+import { db, getUsers } from './services/firebase'
+
+
+class App extends React.Component {
+
+  state = {
+    users: [] as any[]
+  }
+
+
+  componentDidMount() {
+    // console.log('mounted')
+    getUsers(db)    //returns promise
+      .then(users => {
+        this.setState({ users: users })   //actualisation of component state with received users
+        // console.log(users)   //print users in console
+      })
+      .catch(error => console.log(error))
+  }
+
+
+  render() {   // display component (!!!)
+    // console.log(getUsers(db))
+
+    return (
+      <div className="App">
+        <h1>People database</h1>
+        {
+          this.state.users ? this.state.users.map(user => {     // check state.users exist
+            //for every  user table make paragraph component
+            return (
+              <div>
+                <p key={user.id}>{user.name} {user.surname}</p>
+
+              </div>
+            )
+          })
+          : "Loading..."
+        }
+      </div>
+    )
+  }
+}
+export default App
+
+// typescript, user class, every user is a class and then visualise them, widok iżytkownika; 
+//widoki powinny wywołać funkcje ze store

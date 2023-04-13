@@ -1,0 +1,128 @@
+Unused code archive
+
+
+  import React, {useState, useEffect} from 'react'
+  
+  interface InputData {
+    id: string;
+    name: string;
+    surname: string;
+    login: string;
+    //dateOfBirth: Timestamp;
+  }
+
+
+    // const ref = doc(db, "users").withConverter(userConverter);
+    // const getUsers = async () =>  {
+    //   const res: User[];
+      
+    //   const docSnap = await getDoc(ref);
+    //   if (docSnap.exists()) 
+    //   {
+    //       // Convert to myUsers object
+    //     const user = docSnap.;
+    //       // Use a myUsers instance method
+    //     console.log(user.toString());
+    //   } 
+    //   else 
+    //   {
+    //     console.log("No such document!");
+    //   }
+    //   return res;
+  
+    // }
+
+
+    // useEffect(() => {
+    //     const unsubscribed = onSnapshot(collection(db, "users"), (snapshot) => {
+    //         //console.log(snapshot);
+    //       const updatedUsers = snapshot.docs.map((doc) => ({
+    //         id: doc.id,
+    //         ...doc.data()
+    //       }));
+    //       setUsers(updatedUsers);
+    //     });
+    //     return () => unsubscribed();
+    //   }, []);
+    //   console.log(users && users);  
+
+    //   const unsubscribe = onSnapshot(collection(db, "users"), (snapshot) => {
+    //     const users: User[] = [];    
+    //     snapshot.forEach((doc) => {
+    //         users.push(doc.data().name);
+    //     });
+    //     console.log("Current users: ", users.join(", "));
+    // });
+    
+
+
+function RenderringArrayObjects()
+  {
+    //const printUsers: User[] = [];
+
+  //   const tableRows=users?.map(
+  //     (user)=>{
+  //         return( 
+  //           <tr>
+  //             <td>{user.name}</td>
+  //             <td>{user.surname}</td>
+  //             <td>{user.login}</td>
+  //           </tr>
+  //         )
+  //     }
+  // )
+  const data=[
+    {
+        "Name":"Nikita",
+        "Marks":"98",
+        "Phone":"123"
+    },
+    {
+       "Name":"Pratiksha",
+        "Marks":"96",
+        "Phone":"127"
+    },
+    {
+        "Name":"Muskan",
+        "Marks":"97",
+        "Phone":"163"
+    },
+    {
+       "Name":"Nishi",
+       "Marks":"95",
+       "Phone":"193"
+    },
+    {
+       "Name":"Himanshu",
+      "Marks":"78",
+      "Phone":"120"
+    }
+]
+const tableRows=data.map(
+    (element)=>{
+        return( 
+          <tr>
+            <td>{element.Name}</td>
+            <td>{element.Marks}</td>
+            <td>{element.Phone}</td>
+          </tr>
+        )
+    }
+)
+    return(
+      <div>
+        <Table hover>
+            <thead>
+              <tr>    
+                <th> Name</th>
+                <th>Surname</th>
+                <th>Login</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableRows}
+            </tbody>
+          </Table>    
+      </div>
+    )
+  }
